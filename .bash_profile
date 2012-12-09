@@ -1,4 +1,5 @@
-# /etc/skel/.bash_profile
+# .bash_profile
+
 #
 # F.2012-11-03 Sat. : See http://geekscrap.com/2010/02/using-screen-as-your-login-shell/
 #
@@ -27,9 +28,9 @@ export HISTFILESIZE=4096
 # F.2011-08-16 : Source additional things.
 #
 if [ -d ~/.bash_profile.d ]; then
-	for script in ~/.bash_profile.d/*.sh; do
-		[ -r "$script" ] && source "$script"
-	done
+    for script in ~/.bash_profile.d/*.sh; do
+        [ -r "$script" ] && source "$script"
+    done
 fi
 
 # F.2010-08-16 : Additional binary paths.
@@ -38,7 +39,7 @@ fi
 
 echo "Your environment:"
 for e in HOSTNAME LANG LD_LIBRARY_PATH PATH ; do
-	echo "   $e = ${!e}"
+    echo "   $e = ${!e}"
 done
 
 # F.2011-08-16 : Prompt color, slightly modified from BLFS.
@@ -50,24 +51,28 @@ CYAN="\[\e[1;36m\]"
 YELLOW="\[\e[33;1m\]"
 WHITE="\[\e[37;1m\]"
 if [[ $EUID == 0 ]] ; then
-	USERATHOST=$RED
+    USERATHOST=$RED
 else
-	USERATHOST=$GREEN
+    USERATHOST=$GREEN
 fi
 PS1="$USERATHOST\u@\h $YELLOW\j $WHITE\w $USERATHOST\\$ $NORMAL"
 PS2="$USERATHOST> $NORMAL"
 
 # Gentoo's PS1 : \[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\]
 
-# F.2011-08-16 : Quelques alias...
+# F.2011-08-16 : Some aliases...
 alias fu='/sbin/fuser -v'
 alias ll='ls -l'
+alias lla='ll -a'
 alias lsof='/usr/sbin/lsof'
 alias papache='( httpd_pids=`pgrep -u $USER,ppr,noukpo,root httpd` ; [ ! "$httpd_pids" ] || ps -H u -p $httpd_pids )'
 alias vd='vimdiff'
 alias vi='vim'
+alias sls='screen -ls'
+alias sr='screen -r'
+alias sR='screen -R'
 
-# F.2011-08-24 : Alias commandes Git
+# F.2011-08-24 : Some Git aliases.
 alias ga='git add'
 alias gb='git branch'
 alias gc='git commit'

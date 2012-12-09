@@ -1,4 +1,4 @@
-# /etc/skel/.bashrc
+# .bashrc
 #
 # This file is sourced by all *interactive* bash shells on startup,
 # including some apparently interactive shells such as scp and rcp
@@ -20,7 +20,7 @@ fi
 
 # F.2011-08-16 : Source additional custom rc scripts :
 if [ -d ~/.bashrc.d ]; then
-	for script in ~/.bashrc.d/*.sh; do
-		[ -r "$script" ] && source "$script"
-	done
+    for script in ~/.bashrc.d/*.sh; do
+        [ -r "$script" ] && source "$script"
+    done
 fi
