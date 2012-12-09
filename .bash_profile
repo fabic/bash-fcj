@@ -1,4 +1,18 @@
 # /etc/skel/.bash_profile
+#
+# F.2012-11-03 Sat. : See http://geekscrap.com/2010/02/using-screen-as-your-login-shell/
+#
+if [ ${SHLVL} -eq 1 ]; then
+    ((SHLVL+=1)); export SHLVL
+    #exec screen -R -e "^Ee" ${SHELL} -l
+    screen -R -e "^Ee" ${SHELL} -l
+    ((SHLVL-=1)); export SHLVL
+    echo
+    echo "///////////////////////////////////////////////////////"
+    echo "~/.bash_profile: End of screen-itized session, SHLVL=$SHLVL"
+    echo "///////////////////////////////////////////////////////"
+    echo
+fi
 
 # This file is sourced by bash for login shells.  The following line
 # runs your .bashrc and is recommended by the bash info pages.
@@ -75,4 +89,7 @@ alias gsb='git show-branch'
 alias gsh='git show'
 alias gsu='git status -uno'
 alias gt='git tag'
+
+# F.2012-10-31 : List of screens.
+#screen -ls
 
