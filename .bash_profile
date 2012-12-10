@@ -3,7 +3,7 @@
 #
 # F.2012-11-03 Sat. : See http://geekscrap.com/2010/02/using-screen-as-your-login-shell/
 #
-if [ ${SHLVL} -eq 1 ]; then
+if [ "x`which screen 2> /dev/null`" != "x" -a ${SHLVL} -eq 1 ]; then
     ((SHLVL+=1)); export SHLVL
     #exec screen -R -e "^Ee" ${SHELL} -l
     screen -R -e "^Ee" ${SHELL} -l
