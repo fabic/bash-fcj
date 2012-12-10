@@ -37,11 +37,6 @@ fi
 [ -d ~/bin       ] && pathprepend ~/bin
 [ -d ~/tools/bin ] && pathprepend ~/tools/bin
 
-echo "Your environment:"
-for e in HOSTNAME LANG LD_LIBRARY_PATH PATH ; do
-    echo "   $e = ${!e}"
-done
-
 # F.2011-08-16 : Prompt color, slightly modified from BLFS.
 # Setup a red prompt for root and a green one for users.
 NORMAL="\[\e[0m\]"
